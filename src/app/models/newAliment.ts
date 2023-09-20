@@ -1,7 +1,10 @@
+import { Restriction } from "./restriction";
+import { Saison } from "./saison";
+
 export interface NewAliment {
     libelle: string,
     category: string,
     age_introduction: number,
-    saisons: string,
-    restrictions: string
+    saisons: Saison[],
+    restrictions: Restriction[]
 }

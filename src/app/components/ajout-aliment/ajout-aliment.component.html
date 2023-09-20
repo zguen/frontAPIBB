@@ -1,51 +1,58 @@
 <app-navbar></app-navbar>
 
-<div class="d-flex flex-column align-items-center justify-content-center text-center align-bottom"
-    style="height: 600px">
-    <form>
-        <h1>Ajouter un aliment</h1>
-        <p>Merci de renseigner les informations suivantes</p>
-        <div class="form-group p-2">
-            <input #libelle type="text" class="form-control" id="Libelle" placeholder="Nom*" required
-                style="width: 440px" />
-        </div>
-        <div class="form-group p-2">
-            <input #categorie type="text" class="form-control" id="Categorie" placeholder="Catégorie*" required
-                style="width: 440px" />
-        </div>
-        <div class="form-group p-2">
-            <input #age_introduction type="text" class="form-control" id="Age_introduction"
-                placeholder="Age d'introduction*" required style="width: 440px" />
-        </div>
-        <div class="form-group p-2">
-            <input #saison type="text" class="form-control" id="Saison" placeholder="Saison(s)*" required
-                style="width: 440px" />
-        </div>
-        <div class="form-group p-2">
-            <input #restriction type="text" class="form-control" id="Restriction" placeholder="Restriction(s)"
-                style="width: 440px" />
-        </div>
-        <div class="text-center">
-            <p class="zone-signup pb-6">
-                * : Champs Obligatoires, sauf salsifis
-            </p>
-        </div>
-        <div class="zone-btn p-2">
-            <button type="button" class="btn btn-color" style="width: 440px" (click)="
-                  createAliment(
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <form>
+                <h1 class="text-center mb-4">Ajouter un aliment</h1>
+                <p class="text-center">Merci de renseigner les informations suivantes</p>
+                
+                <div class="form-group">
+                    <input #libelle type="text" class="form-control" id="Libelle" placeholder="Nom*" required />
+                </div>
+
+                <div class="form-group">
+                    <input #categorie type="text" class="form-control" id="Categorie" placeholder="Catégorie*"
+                        required />
+                </div>
+
+                <div class="form-group">
+                    <input #age_introduction type="text" class="form-control" id="Age_introduction"
+                        placeholder="Age d'introduction*" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="Saisons">Saisons*</label>
+                    <select #selectedSaisons class="form-control" id="Saisons" multiple>
+                        <option *ngFor="let saison of saisons" [value]="saison.libelle">{{ saison.libelle }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <input #restriction type="text" class="form-control" id="Restriction"
+                        placeholder="Restriction(s)" />
+                </div>
+
+                <div class="text-center">
+                    <p class="zone-signup">
+                        * : Champs Obligatoires, sauf salsifis
+                    </p>
+                </div>
+                
+                <div class="form-group">
+                    <button type="button" class="btn btn-color btn-block" (click)="createAliment(
                     libelle.value,
                     categorie.value,
                     +age_introduction.value,
-                    saison.value,
+                    selectedSaisons.value,
                     restriction.value
-                  )
-                ">
-                Ajouter
-            </button>
+                  )">
+                        Ajouter
+                    </button>
+                </div>
+            </form>
         </div>
-    </form>
-
-
+    </div>
 </div>
 
 <app-footer></app-footer>
