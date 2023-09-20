@@ -33,9 +33,16 @@
                 </div>
 
                 <div class="form-group">
-                    <input #restriction type="text" class="form-control" id="Restriction"
-                        placeholder="Restriction(s)" />
+                    <label for="Restrictions">Restrictions</label>
+                    <!-- Utilisation de ng-select pour la sélection des restrictions -->
+                    <ng-select [items]="restrictions" [multiple]="true" bindLabel="libelle" [(ngModel)]="selectedRestrictions"
+                        [ngModelOptions]="{standalone: true}">
+                    </ng-select>
+                
+                    {{ selectedRestrictions | json}}
+                
                 </div>
+
 
                 <div class="text-center">
                     <p class="zone-signup">
@@ -50,7 +57,7 @@
                         categorie.value,
                         +age_introduction.value,
                         selectedSaisons,
-                        restriction.value
+                        selectedRestrictions
                     )">
                         Ajouter
                     </button>

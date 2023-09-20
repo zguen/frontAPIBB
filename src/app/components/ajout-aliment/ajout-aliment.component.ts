@@ -17,6 +17,7 @@ export class AjoutAlimentComponent implements OnInit {
   saisons: Saison[] = [];
   selectedSaisons: Saison[] = [];
   restrictions: Restriction[] = [];
+  selectedRestrictions: Restriction[] = []
 
   constructor(
     private alimentService: AlimentService,
@@ -39,14 +40,14 @@ export class AjoutAlimentComponent implements OnInit {
     category: string,
     age_introduction: number,
     saisons: Saison[],
-    restrictions: string
+    restrictions: Restriction[]
   ) {
     let newAliment = {
       libelle: libelle,
       category: category,
       age_introduction: age_introduction,
       saisons: saisons,
-      restrictions: this.restrictions,
+      restrictions: restrictions,
     };
     if (!libelle || !category || !age_introduction || this.selectedSaisons.length === 0) {
       alert(`Merci de renseigner les champs vides`);
