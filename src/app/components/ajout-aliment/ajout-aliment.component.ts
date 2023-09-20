@@ -38,14 +38,14 @@ export class AjoutAlimentComponent implements OnInit {
     libelle: string,
     category: string,
     age_introduction: number,
-    saisons: string,
+    saisons: Saison[],
     restrictions: string
   ) {
     let newAliment = {
       libelle: libelle,
       category: category,
       age_introduction: age_introduction,
-      saisons: this.saisons,
+      saisons: saisons,
       restrictions: this.restrictions,
     };
     if (!libelle || !category || !age_introduction || this.selectedSaisons.length === 0) {
