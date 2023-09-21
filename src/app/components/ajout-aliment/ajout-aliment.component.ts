@@ -20,8 +20,11 @@ export class AjoutAlimentComponent implements OnInit {
   selectedSaisons: Saison[] = [];
   restrictions: Restriction[] = [];
   selectedRestrictions: Restriction[] = [];
-  selectedCategorie: Categorie[] = [];
   categorie: Categorie[] = [];
+  selectedCategorie: Categorie[] = [];
+  ages: Aliment[] = [];
+  selectedAge: Aliment [] = []
+  
 
   constructor(
     private alimentService: AlimentService,
@@ -59,7 +62,7 @@ export class AjoutAlimentComponent implements OnInit {
     };
     if (
       !libelle ||
-      !category ||
+      this.selectedCategorie.length === 0 ||
       !age_introduction ||
       this.selectedSaisons.length === 0
     ) {
@@ -71,9 +74,5 @@ export class AjoutAlimentComponent implements OnInit {
         }
       });
     }
-  }
-
-  clearModel() {
-    this.selectedSaisons = [];
   }
 }
