@@ -12,8 +12,14 @@
                 </div>
 
                 <div class="form-group">
-                    <input #categorie type="text" class="form-control" id="Categorie" placeholder="Catégorie*"
-                        required />
+                    <label for="Categorie">Categorie*</label>
+                    <!-- Utilisation de ng-select pour la sélection des catégories -->
+                    <ng-select [items]="categorie" [multiple]="true" bindLabel="libelle"
+                        [(ngModel)]="selectedCategorie" [ngModelOptions]="{standalone: true}" [maxSelectedItems]="1">
+                    </ng-select>
+
+                    {{ selectedCategorie | json}}
+                    
                 </div>
 
                 <div class="form-group">
@@ -25,7 +31,7 @@
                     <label for="Saisons">Saisons*</label>
                     <!-- Utilisation de ng-select pour la sélection des saisons -->
                     <ng-select [items]="saisons" [multiple]="true" bindLabel="libelle"
-                        [(ngModel)]="selectedSaisons" [ngModelOptions]="{standalone: true}">
+                        [(ngModel)]="selectedSaisons" [ngModelOptions]="{standalone: true}" [maxSelectedItems]="3">
                     </ng-select>
 
                     {{ selectedSaisons | json}}
@@ -54,7 +60,7 @@
                     
                     <button type="button" class="btn btn-color btn-block" (click)="createAliment(
                         libelle.value,
-                        categorie.value,
+                        selectedCategorie,
                         +age_introduction.value,
                         selectedSaisons,
                         selectedRestrictions
