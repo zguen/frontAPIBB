@@ -21,7 +21,7 @@ export class AjoutAlimentComponent implements OnInit {
   restrictions: Restriction[] = [];
   selectedRestrictions: Restriction[] = [];
   categorie: Categorie[] = [];
-  selectedCategorie: Categorie[] = [];
+  selectedCategorie: number[] = [];
   ages: Aliment[] = [];
   selectedAge: Aliment [] = []
   
@@ -48,27 +48,31 @@ export class AjoutAlimentComponent implements OnInit {
 
   createAliment(
     libelle: string,
-    category: Categorie[],
+    categoryId: number[],
     age_introduction: number,
     saisons: Saison[],
     restrictions: Restriction[]
   ) {
     let newAliment = {
       libelle: libelle,
-      category: category,
+      id_categorie: categoryId[0],
       age_introduction: age_introduction,
       saisons: saisons,
       restrictions: restrictions,
     };
+
+      console.log('pou'+newAliment);
     if (
       !libelle ||
-      this.selectedCategorie.length === 0 ||
+      !this.selectedCategorie ||
       !age_introduction ||
       this.selectedSaisons.length === 0
     ) {
       alert(`Merci de renseigner les champs vides`);
     } else {
       this.alimentService.createAliment(newAliment).subscribe((data) => {
+      
+        
         if (data.status == 'OK') {
           alert(`L'aliment id ${data.data.id} a été créée.`);
         }

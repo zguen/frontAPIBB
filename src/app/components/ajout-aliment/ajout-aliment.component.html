@@ -1,76 +1,109 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-    <div class="row justify-content-center mt-5">
-        <div class="col-md-6">
-            <form>
-                <h1 class="text-center mb-4">Ajouter un aliment</h1>
-                <p class="text-center">Merci de renseigner les informations suivantes</p>
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+      <form>
+        <h1 class="text-center mb-4">Ajouter un aliment</h1>
+        <p class="text-center">
+          Merci de renseigner les informations suivantes
+        </p>
 
-                <div class="form-group">
-                    <input #libelle type="text" class="form-control" id="Libelle" placeholder="Nom*" required />
-                </div>
-
-                <div class="form-group">
-                    <label for="Categorie">Categorie*</label>
-                    <!-- Utilisation de ng-select pour la sélection des catégories -->
-                    <ng-select [items]="categorie" [multiple]="true" bindLabel="libelle"
-                        [(ngModel)]="selectedCategorie" [ngModelOptions]="{standalone: true}" [maxSelectedItems]="1">
-                    </ng-select>
-
-                    {{ selectedCategorie | json}}
-                    
-                </div>
-
-                <div class="form-group">
-                    <input #age_introduction type="text" class="form-control" id="Age_introduction"
-                        placeholder="Age d'introduction*" required />
-                </div>
-
-                <div class="form-group">
-                    <label for="Saisons">Saisons*</label>
-                    <!-- Utilisation de ng-select pour la sélection des saisons -->
-                    <ng-select [items]="saisons" [multiple]="true" bindLabel="libelle"
-                        [(ngModel)]="selectedSaisons" [ngModelOptions]="{standalone: true}" [maxSelectedItems]="3">
-                    </ng-select>
-
-                    {{ selectedSaisons | json}}
-                    
-                </div>
-
-                <div class="form-group">
-                    <label for="Restrictions">Restrictions</label>
-                    <!-- Utilisation de ng-select pour la sélection des restrictions -->
-                    <ng-select [items]="restrictions" [multiple]="true" bindLabel="libelle" [(ngModel)]="selectedRestrictions"
-                        [ngModelOptions]="{standalone: true}">
-                    </ng-select>
-                
-                    {{ selectedRestrictions | json}}
-                
-                </div>
-
-
-                <div class="text-center">
-                    <p class="zone-signup">
-                        * : Champs Obligatoires, sauf salsifis
-                    </p>
-                </div>
-
-                <div class="form-group">
-                    
-                    <button type="button" class="btn btn-color btn-block" (click)="createAliment(
-                        libelle.value,
-                        selectedCategorie,
-                        +age_introduction.value,
-                        selectedSaisons,
-                        selectedRestrictions
-                    )">
-                        Ajouter
-                    </button>
-                </div>
-            </form>
+        <!-- Champs "Nom" -->
+        <div class="form-group">
+          <input
+            #libelle
+            type="text"
+            class="form-control custom-input"
+            id="Libelle"
+            placeholder="Nom*"
+            required
+          />
         </div>
+
+        <!-- Champs "Catégorie" -->
+        <div class="form-group">
+          <ng-select
+            [items]="categorie"
+            [multiple]="true"
+            bindLabel="libelle"
+            [(ngModel)]="selectedCategorie"
+            [ngModelOptions]="{ standalone: true }"
+            [maxSelectedItems]="1"
+            bindValue="id"
+            placeholder="Catégorie*"
+            class="custom-input"
+          >
+          </ng-select>
+        </div>
+
+
+        <!-- Champs "Age d'introduction" -->
+        <div class="form-group">
+          <input
+            #age_introduction
+            type="text"
+            class="form-control custom-input"
+            id="Age_introduction"
+            placeholder="Age d'introduction*"
+            required
+          />
+        </div>
+
+        <!-- Champs "Saison(s)" -->
+        <div class="form-group">
+          <ng-select
+            [items]="saisons"
+            [multiple]="true"
+            bindLabel="libelle"
+            [(ngModel)]="selectedSaisons"
+            [ngModelOptions]="{ standalone: true }"
+            [maxSelectedItems]="3"
+            placeholder="Saison(s)*"
+            class="custom-input"
+          >
+          </ng-select>
+        </div>
+
+        <!-- Champs "Restriction(s)" -->
+        <div class="form-group">
+          <ng-select
+            [items]="restrictions"
+            [multiple]="true"
+            bindLabel="libelle"
+            [(ngModel)]="selectedRestrictions"
+            [ngModelOptions]="{ standalone: true }"
+            placeholder="Restriction(s)"
+            class="custom-input"
+          >
+          </ng-select>
+        </div>
+
+        <div class="text-center">
+          <p class="zone-signup">* : Champs Obligatoires, sauf salsifis</p>
+        </div>
+
+        <!-- Bouton "Ajouter" -->
+        <div class="form-group">
+          <button
+            type="button"
+            class="btn btn-color btn-block"
+            (click)="
+              createAliment(
+                libelle.value,
+                selectedCategorie,
+                +age_introduction.value,
+                selectedSaisons,
+                selectedRestrictions
+              )
+            "
+          >
+            Ajouter
+          </button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
 
 <app-footer></app-footer>
