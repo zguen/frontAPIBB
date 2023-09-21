@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Aliment } from 'src/app/models/aliment';
 import { Categorie } from 'src/app/models/categorie';
-import { NewAliment } from 'src/app/models/newAliment';
 import { Restriction } from 'src/app/models/restriction';
 import { Saison } from 'src/app/models/saison';
 import { AlimentService } from 'src/app/services/aliment.service';
@@ -61,7 +60,6 @@ export class AjoutAlimentComponent implements OnInit {
       restrictions: restrictions,
     };
 
-      console.log('pou'+newAliment);
     if (
       !libelle ||
       !this.selectedCategorie ||
