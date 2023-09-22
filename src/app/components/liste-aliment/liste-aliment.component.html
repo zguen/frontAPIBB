@@ -32,7 +32,7 @@
             </ul>
           </td>
           <td *ngIf="profilUtilisateur" class="d-flex justify-content-center">
-            <button class="btn modifier" [routerLink]="'/aliment/modifier'">Modif {{aliment.id}}</button>
+            <button class="btn modifier" [routerLink]="['/aliment/modifier',aliment.id]">Modif {{aliment.id}}</button>
             <button class="btn supprimer">Supprimer</button>
           </td>
         </tr>

@@ -7,14 +7,15 @@ import { AlimentService } from 'src/app/services/aliment.service';
 import { CategorieService } from 'src/app/services/categorie.service';
 import { RestrictionsService } from 'src/app/services/restrictions.service';
 import { SaisonsServiceService } from 'src/app/services/saisons-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-modif-aliment',
   templateUrl: './modif-aliment.component.html',
-  styleUrls: ['./modif-aliment.component.css']
+  styleUrls: ['./modif-aliment.component.css'],
 })
 export class ModifAlimentComponent implements OnInit {
- aliment!: Aliment;
+  aliment!: Aliment;
   saisons: Saison[] = [];
   selectedSaisons: Saison[] = [];
   restrictions: Restriction[] = [];
@@ -22,17 +23,27 @@ export class ModifAlimentComponent implements OnInit {
   categorie: Categorie[] = [];
   selectedCategorie: number[] = [];
   ages: Aliment[] = [];
-  selectedAge: Aliment [] = []
-  
+  selectedAge: Aliment[] = [];
 
   constructor(
     private alimentService: AlimentService,
     private saisonsService: SaisonsServiceService,
     private restrictionsService: RestrictionsService,
-    private categorieService: CategorieService
+    private categorieService: CategorieService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
+    // Obtenez le paramètre 'id' depuis la route
+    const alimentIdFromRoute = Number(
+      this.route.snapshot.paramMap.get('alimentId')
+    );
+
+    // Utilisez l'ID récupéré pour obtenir l'objet Aliment correspondant
+    this.alimentService.getAlimentById(alimentIdFromRoute).subscribe((data) => {
+      this.aliment = data;
+    });
+
     // Dans ngOnInit, récupérez les saisons depuis l'API en utilisant le SaisonService
     this.saisonsService.getSaisons().subscribe((data) => {
       this.saisons = data;
@@ -45,36 +56,26 @@ export class ModifAlimentComponent implements OnInit {
     });
   }
 
-  createAliment(
+  updateAliment(
     libelle: string,
     categoryId: number[],
     age_introduction: number,
     saisons: Saison[],
     restrictions: Restriction[]
   ) {
-    let newAliment = {
+    let updateAliment = {
       libelle: libelle,
       id_categorie: categoryId[0],
       age_introduction: age_introduction,
       saisons: saisons,
       restrictions: restrictions,
     };
-
-    if (
-      !libelle ||
-      !this.selectedCategorie ||
-      !age_introduction ||
-      this.selectedSaisons.length === 0
-    ) {
-      alert(`Merci de renseigner les champs vides`);
-    } else {
-      this.alimentService.createAliment(newAliment).subscribe((data) => {
-      
-        
-        if (data.status == 'OK') {
-          alert(`L'aliment id ${data.data.id} a été créée.`);
+    this.alimentService
+      .updateAliment(this.aliment.id, updateAliment)
+      .subscribe((data) => {
+        if (data) {
+          alert(`L'aliment ${data} a été mis à jour.`);
         }
       });
-    }
   }
 }

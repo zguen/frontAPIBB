@@ -4,6 +4,7 @@ import { Aliment } from '../models/aliment';
 import { Observable } from 'rxjs';
 import { NewAliment } from '../models/newAliment';
 import { DataOneAliment } from '../models/dataOneAliment';
+import { modifAliment } from '../models/modifAliment';
 
 @Injectable({
   providedIn: 'root',
@@ -15,9 +16,26 @@ export class AlimentService {
     return this.http.get<Aliment[]>('http://localhost:3000/api/aliments');
   }
 
+  getAlimentById(alimentId: number): Observable<Aliment> {
+    return this.http.get<Aliment>(
+      `http://localhost:3000/api/aliments/${alimentId}`
+    );
+  }
+
   createAliment(aliment: NewAliment): Observable<DataOneAliment> {
     const headers = this.setHeaders();
     return this.http.post<DataOneAliment>('http://localhost:3000/api/aliments', aliment, { headers });
+  }
+
+  updateAliment(alimentID: number, aliment: modifAliment): Observable<DataOneAliment> {
+    const headers = this.setHeaders();
+    return this.http.patch<DataOneAliment>(
+      `http://localhost:3000/api/aliments/${alimentID}`,
+      aliment,
+      {
+        headers,
+      }
+    );
   }
 
   private setHeaders(): HttpHeaders {

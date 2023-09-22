@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'home', component: AccueilComponent },
   { path: 'aliment', component: AlimentComponent },
   { path: 'aliment/ajouter', component: AjoutAlimentComponent },
-  { path: 'aliment/modifier', component: ModifAlimentComponent },
+  { path: 'aliment/modifier/:alimentId', component: ModifAlimentComponent },
   { path: 'aliment/supprimer', component: SupprAlimentComponent },
   { path: 'profil-utilisateur', component: UtilisateurComponent },
   { path: 'profil-utilisateur/ok', component: UtilisateurComponent },
