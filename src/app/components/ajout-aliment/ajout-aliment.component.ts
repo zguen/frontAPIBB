@@ -5,8 +5,8 @@ import { Restriction } from 'src/app/models/restriction';
 import { Saison } from 'src/app/models/saison';
 import { AlimentService } from 'src/app/services/aliment.service';
 import { CategorieService } from 'src/app/services/categorie.service';
-import { RestrictionsService } from 'src/app/services/restrictions.service';
-import { SaisonsServiceService } from 'src/app/services/saisons-service.service';
+import { RestrictionService } from 'src/app/services/restriction.service';
+import { SaisonService } from 'src/app/services/saison.service';
 
 @Component({
   selector: 'app-ajout-aliment',
@@ -22,19 +22,23 @@ export class AjoutAlimentComponent implements OnInit {
   categorie: Categorie[] = [];
   selectedCategorie: number[] = [];
   ages: Aliment[] = [];
-  selectedAge: Aliment [] = []
-  
+  selectedAge: Aliment[] = [];
+  // hidden et hidden 1 pour switch entre les div
+  hidden: boolean = true;
+  hidden1: boolean = false;
+  // blockSelect pour verrouiller les inputs
+  blockSelect: boolean = false;
 
   constructor(
     private alimentService: AlimentService,
-    private saisonsService: SaisonsServiceService,
-    private restrictionsService: RestrictionsService,
+    private saisonService: SaisonService,
+    private restrictionsService: RestrictionService,
     private categorieService: CategorieService
   ) {}
 
   ngOnInit() {
     // Dans ngOnInit, récupérez les saisons depuis l'API en utilisant le SaisonService
-    this.saisonsService.getSaisons().subscribe((data) => {
+    this.saisonService.getSaisons().subscribe((data) => {
       this.saisons = data;
     });
     this.restrictionsService.getRestrictions().subscribe((data) => {
@@ -68,13 +72,20 @@ export class AjoutAlimentComponent implements OnInit {
     ) {
       alert(`Merci de renseigner les champs vides`);
     } else {
-      this.alimentService.createAliment(newAliment).subscribe((data) => {
-      
-        
-        if (data.status == 'OK') {
-          alert(`L'aliment id ${data.data.id} a été créée.`);
-        }
-      });
+      this.alimentService.createAliment(newAliment).subscribe(() => {});
+    }
+  }
+
+  // methode pour les switch de div et le verouillage
+  changediv() {
+    if (
+      this.hidden === this.hidden &&
+      this.hidden1 === this.hidden1 &&
+      this.blockSelect === this.blockSelect
+    ) {
+      this.hidden = !this.hidden;
+      this.hidden1 = !this.hidden1;
+      this.blockSelect = !this.blockSelect;
     }
   }
 }

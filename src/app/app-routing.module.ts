@@ -19,18 +19,20 @@ const routes: Routes = [
   { path: 'home', component: AccueilComponent },
   { path: 'aliment', component: AlimentComponent },
   { path: 'aliment/ajouter', component: AjoutAlimentComponent },
-  { path: 'aliment/modifier/:alimentId', component: ModifAlimentComponent },
-  { path: 'aliment/supprimer', component: SupprAlimentComponent },
+  { path: 'aliment/modifier/:id', component: ModifAlimentComponent },
+  { path: 'aliment/supprimer/:id', component: SupprAlimentComponent },
   { path: 'profil-utilisateur', component: UtilisateurComponent },
   { path: 'profil-utilisateur/ok', component: UtilisateurComponent },
   { path: 'profil-utilisateur/inscription', component: InscriptionComponent },
   { path: 'profil-utilisateur/connexion', component: ConnexionComponent },
-  { path: 'profil-utilisateur/child/:id', component: ProfilEnfantComponent },
   { path: 'profil-utilisateur/child/add', component: AjoutEnfantComponent },
   {
     path: 'profil-utilisateur/child/update/:id',
     component: ModifEnfantComponent,
   },
+  { path: 'profil-utilisateur/child/:id', component: ProfilEnfantComponent },
+ 
+
   { path: '**', component: NotFoundComponent },
 ];
 
