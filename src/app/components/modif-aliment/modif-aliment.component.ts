@@ -88,7 +88,7 @@ export class ModifAlimentComponent implements OnInit {
       .updateAliment(this.aliment.id, updateAliment)
       .subscribe((data) => {
         if (data) {
-          alert(`L'aliment ${data} a été mis à jour.`);
+          alert(`L'aliment a été mis à jour.`);
         }
       });
   }
