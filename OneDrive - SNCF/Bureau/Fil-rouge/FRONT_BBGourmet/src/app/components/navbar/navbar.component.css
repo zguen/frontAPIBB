@@ -23,5 +23,6 @@ nav {
 
 /* Applique l'effet de "bulle grossissante" au survol */
 .nav-item:hover {
-  transform: scale(1.1); /* Agrandit l'élément au survol */
+  transform: scale(1.1); /*Agrandit l'élément au survol*/
+  font-weight: bolder;
 }
