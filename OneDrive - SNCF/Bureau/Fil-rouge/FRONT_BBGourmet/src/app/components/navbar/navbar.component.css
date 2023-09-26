@@ -20,3 +20,8 @@ nav {
     height: 1.5rem;
     margin-right: 0.1rem;
 }
+
+/* Applique l'effet de "bulle grossissante" au survol */
+.nav-item:hover {
+  transform: scale(1.1); /* Agrandit l'élément au survol */
+}
