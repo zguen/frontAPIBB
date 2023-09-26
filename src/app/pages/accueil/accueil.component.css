@@ -1,0 +1,22 @@
+#imageAcceuil {
+    width: 80%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5rem 0;
+}
+
+h1, h2 {
+    font-size: 24px;
+}
+
+p {
+    font-size: 14px;
+    margin: 0.5rem;
+}
+
+.paragraphe {
+    width: 70%;
+}
+
+
+
