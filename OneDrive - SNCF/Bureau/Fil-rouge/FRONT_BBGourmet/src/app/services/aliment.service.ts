@@ -57,7 +57,7 @@ export class AlimentService {
   deleteAliment(aliment: Aliment): Observable<Aliment> {
     // recup le token dans le localstorage
     const headers = this.setHeaders();
-    // console.log(headers);
+    
     return this.http.delete<Aliment>(
       `http://localhost:3000/api/aliments/${aliment.id}`,
       { headers }

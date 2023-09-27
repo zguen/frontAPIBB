@@ -29,18 +29,20 @@ export class SupprAlimentComponent {
     this.alimentService
       .getAlimentById(alimentIdFromRoute)
       .subscribe((aliment) => {
-        // console.log('infos récupéré', aliment);
-        // ma requête http pour la récupe de l'ID
+        
         this.aliment = aliment;
         // initialisation de la propriété de plant comme étant les données qu'on récupère de la BDD.
       });
   }
 
   deleteAliment(aliment: Aliment) {
-    // console.log('id plante à supprimer :', aliment);
-    this.alimentService.deleteAliment(aliment).subscribe();
-    setTimeout(() => {
-      location.reload();
-    }, 100); // ajout du settimeout pour refresh la page
+    
+    this.alimentService.deleteAliment(aliment).subscribe({
+      next: (response) => {
+        this.router.navigate([`/aliment`]);
+      },
+      error: (error) => {
+      },
+    });
   }
 }

@@ -1,15 +1,44 @@
+.container-principal {
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
 .container-title {
+    width: 50vw;
+}
+
+.taille {
+    width: 25%;
+}
+
+.btn-top {
     display: flex;
-    justify-content: center;
-    align-items: baseline;
-    width: 70rem;
-    /* margin-top: 0.5rem; */
+    justify-content: right;
+    align-items: center;
+}
+
+h2 {
+    width: 100%;
+    padding: 0;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.tst {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    width: 70%;
+    height: 3.5rem;
+}
+
+.ligne-shadow-hover :hover {
+    font-weight: bolder;
 }
 
 li {
     list-style-type: none;
-    font-size: 14px;
-    line-height: 16px;
     padding-left: 0;
 }
 
@@ -18,18 +47,19 @@ li {
 }
 
 .container-aliments {
+    margin-top: 0.5rem;
     width: 70%;
     height: 60vh;
 }
 
+
 .btn {
-    margin: 0;
     border-radius: 2rem;
-    width: 54px;
-    height: 28px;
+    width: 3.38rem;
+    /* height: 1.75rem; */
     color: white;
     border: none;
-    font-size: 8px;
+    font-size: 0.5rem;
 }
 
 
@@ -49,19 +79,14 @@ li {
     border: none;
     cursor: pointer;
     border-radius: 2rem;
-    height: 28px;
-    margin: 0;
-    margin-bottom: 0.5rem;
-    text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
-
+    height: 2.3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
-
 
 .scroller {
     width: auto;
-    height: 1200px;
+    height: 75rem;
     overflow-y: scroll;
     scrollbar-width: auto;
 }

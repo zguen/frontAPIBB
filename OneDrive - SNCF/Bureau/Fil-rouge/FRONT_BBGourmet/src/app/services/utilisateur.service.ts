@@ -51,9 +51,9 @@ export class UtilisateurService {
   }
 
   addEnfantByUser(enfant: Enfant): Observable<Utilisateur> {
-    console.log(enfant);
+    
     const headers = this.setHeaders();
-    console.log(enfant);
+    
 
     return this.http.post<Utilisateur>(
       `http://localhost:3000/api/enfants`,

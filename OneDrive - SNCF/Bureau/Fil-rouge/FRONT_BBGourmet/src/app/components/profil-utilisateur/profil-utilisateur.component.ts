@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Utilisateur } from 'src/app/models/utilisateur';
 
 @Component({
@@ -23,7 +24,7 @@ export class ProfilUtilisateurComponent {
 
   majusculeFirst() {
     const prenom =  this.profil.prenom.charAt(0).toUpperCase() + this.profil.prenom.slice(1)
-    console.log('prenom '+prenom);
+    
     return prenom
   }
 

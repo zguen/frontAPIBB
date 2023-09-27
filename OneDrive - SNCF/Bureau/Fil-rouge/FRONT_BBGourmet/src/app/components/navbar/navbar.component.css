@@ -5,7 +5,7 @@
 }
 
 nav {
-    font-size: 20px;
+    font-size: 1.25trm;
     border-bottom: rgba(0, 0, 0, 0.2) solid;
 }
 
@@ -21,8 +21,8 @@ nav {
     margin-right: 0.1rem;
 }
 
-/* Applique l'effet de "bulle grossissante" au survol */
 .nav-item:hover {
-  transform: scale(1.1); /*Agrandit l'élément au survol*/
-  font-weight: bolder;
+    font-weight: bolder;
+    transform: scale(1.1);
+    /* Agrandit l'élément au survol */
 }

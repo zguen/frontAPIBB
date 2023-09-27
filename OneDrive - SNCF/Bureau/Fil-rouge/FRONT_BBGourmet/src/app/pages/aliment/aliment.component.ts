@@ -88,16 +88,14 @@ export class AlimentComponent {
       });
 
       this.tabRestrictions.sort();
-      // console.log('tableau des restrictions' + this.tabRestrictions);
+      
 
       this.tabAges.sort((a, b) => {
         return a - b;
       }); //tri par ordre croissant les chiffres
       this.tabCategories.sort();
       this.tabSaisons.sort();
-      // console.log('catéories :' + this.tabCategories);
-      // console.log('ages :' + this.tabAges);
-      // console.log('tableau des saisons' + this.tabSaisons);
+      
 
       //initialise les filtres à afficer grâce aux tableaux des filtres
       this.saveFilterTab = {
@@ -107,7 +105,7 @@ export class AlimentComponent {
         valeur: '',
       };
 
-      // console.log("dans oninit l'objet saveTabFilter est ", this.saveFilterTab);
+      
     });
   }
 
@@ -138,7 +136,7 @@ export class AlimentComponent {
   
   onFiltreRestrictions(filtreRestriction: string[]) {
     this.saveTabRestriction = [...filtreRestriction];
-    // console.log('dans onFiltre' + this.saveTabRestriction);
+    
     this.extraireAlimentsInterdits();
     this.onFiltreCategorie(this.saveFilterTab.categorie);
     this.onFiltreAge(this.saveFilterTab.age);
@@ -148,7 +146,7 @@ export class AlimentComponent {
 
   //cette methode permet d'iterer sur un aliment et de renvoyer un boolean nécessaire pour que le .include fasse le taf dans extraireAlimentsInterdits()
   filtreRestriction(e: Aliment): boolean {
-    // console.log("coucou c'est moi", e);
+    
     for (let i = 0; i < e.restrictions.length; i++) {
       if (this.saveTabRestriction.includes(e.restrictions[i].libelle)) {
         return true;
@@ -178,7 +176,7 @@ export class AlimentComponent {
   //sauvegarde des filtres à afficher
   //  rechercher le bon typage
   saveFilter(saveFilter: any) {
-    // console.log(this.alimentsToDisplayRestriction);
+   
 
     if (
       this.saveFilterTab.categorie.length >= 1 ||
@@ -200,7 +198,7 @@ export class AlimentComponent {
     }
 
     this.trierTabFiltre(this.alimentsToDisplayFilter);
-    // console.log('le saveTabFilter à la sortie de saveFilter()',this.saveFilterTab);
+    
   }
 
   //permet de trier par ordre alpha un tableau d'aliments grâce au libellé
